@@ -1,0 +1,99 @@
+1. New Property
+Title: Spacious 3BHK Apartment in Whitefield, Bangalore
+Property status: For Sale
+
+Address:
+1234, Main St, Whitefield
+State: Karnataka
+City: Bangalore
+Description:
+Modern 3BHK apartment located in the tech hub of Whitefield. Features include modular kitchen, spacious balconies, and proximity to IT parks and schools. Gated community with amenities like pool, gym, and clubhouse.
+Category: Apartment
+
+Price: ₹85,00,000
+Bedrooms: 3
+Bathrooms: 2
+Garage: 1
+Area: 1500 SQFT
+MainPhoto: [Attach file]
+Photo 1–6: [Attach photos]
+
+2. New Property
+Title: Luxurious Villa in Sector 150, Noida
+Property status: For Sale
+
+Address:
+1234, Main St, Sector 150
+State: Uttar Pradesh
+City: Noida
+Description:
+Premium 4BHK villa in a green neighborhood. Private garden, double-car garage, and rooftop terrace. Ideal for families looking for privacy with modern luxuries.
+Category: Villa
+
+Price: ₹2,50,00,000
+Bedrooms: 4
+Bathrooms: 4
+Garage: 2
+Area: 3200 SQFT
+MainPhoto: [Attach file]
+Photo 1–6: [Attach photos]
+
+3. New Property
+Title: Affordable 1BHK Flat in Kothrud, Pune
+Property status: For Rent
+
+Address:
+1234, Main St, Kothrud
+State: Maharashtra
+City: Pune
+Description:
+Cozy 1BHK flat ideal for working professionals or students. Well-connected to public transport and nearby colleges. Available for immediate occupancy.
+Category: Apartment
+
+Price: ₹15,000/month
+Bedrooms: 1
+Bathrooms: 1
+Garage: 0
+Area: 550 SQFT
+MainPhoto: [Attach file]
+Photo 1–6: [Attach photos]
+
+4. New Property
+Title: Commercial Office Space in Connaught Place, Delhi
+Property status: For Lease
+
+Address:
+1234, Main St, Connaught Place
+State: Delhi
+City: New Delhi
+Description:
+Premium office space in the heart of Delhi. Ideal for startups and established firms. Fully furnished with meeting rooms, cafeteria, and high-speed internet.
+Category: Commercial
+
+Price: ₹1,20,000/month
+Bedrooms: 0
+Bathrooms: 2
+Garage: 2
+Area: 2000 SQFT
+MainPhoto: [Attach file]
+Photo 1–6: [Attach photos]
+
+5. New Property
+Title: Scenic Farmhouse Near Lonavala Hills
+Property status: For Sale
+
+Address:
+1234, Main St, Near Lonavala
+State: Maharashtra
+City: Lonavala
+Description:
+Beautiful 2-acre farmhouse with a 2BHK cottage, lush greenery, and a private pool. Perfect weekend getaway or rental investment.
+Category: Farmhouse
+
+Price: ₹1,75,00,000
+Bedrooms: 2
+Bathrooms: 2
+Garage: 1
+Area: 5000 SQFT (Built-up)
+MainPhoto: [Attach file]
+Photo 1–6: [Attach photos]

@@ -1,0 +1,630 @@
+{% extends 'base.html' %}
+{% block title %}Home Property | Home{% endblock title %}
+{% load static %}
+{%load humanize%}
+
+{% block content %}
+  <!-- Start slider  -->
+  <section id="aa-slider">
+    <div class="aa-slider-area"> 
+      <!-- Top slider -->
+      <div class="aa-top-slider">
+        <!-- Top slider single slide -->
+        {%for exc_property in exclusive_properties%}
+        <div class="aa-top-slider-single">
+          <img src="{{exc_property.MainPhoto.url}}" alt="img">
+          <!-- Top slider content -->
+          <div class="aa-top-slider-content">
+            <span class="aa-top-slider-catg">EXCLUSIVE</span>
+            <h2 class="aa-top-slider-title">{{exc_property.sqft}} Square Feet</h2>
+            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>{{exc_property.state}}, {{exc_property.city}}</p>
+            <p class="aa-top-slider-price">₹{{exc_property.price|intcomma}}</p>
+            <a href="{{exc_property.get_absolute_url}}" class="aa-top-slider-btn">Read More <span class="fa fa-angle-double-right"></span></a>
+          </div>
+          <!-- / Top slider content -->
+        </div>
+        {%empty%}
+        <div class="aa-top-slider-single">
+          <img src="static/img/property-header-bg.jpg" alt="img">
+        <div class="aa-top-slider-content">
+          <span class="aa-top-slider-catg">EXCLUSIVE</span>
+          <h2 class="aa-top-slider-title">Area in Square Feet</h2>
+          <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>State, City</p>
+          <p class="aa-top-slider-price">₹ Price</p>
+          <a href="" class="aa-top-slider-btn">Read More <span class="fa fa-angle-double-right"></span></a>
+        </div>
+        <!-- / Top slider single slide -->
+        {%endfor%}
+      </div>
+    </div>
+  </section>
+  <!-- End slider  -->
+
+  <!-- Advance Search -->
+  <section id="aa-advance-search">
+    <div class="container">
+      <div class="aa-advance-search-area">
+        <form method="GET" action="{% url 'property:Search'%}">
+         <div class="aa-advance-search-top">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="aa-single-advance-search">
+                {{form.location}}
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="aa-single-advance-search">
+                    {{form.category}}
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                 <div class="aa-single-advance-search">
+                    {{form.look_for}}
+                  </div>
+              </div>
+              <div class="col-md-4">
+                <div class="aa-single-advance-search">
+                  <input class="aa-search-btn" type="submit" value="Search">
+                </div>
+              </div>
+            </div>
+          </div>
+         <div class="aa-advance-search-bottom">
+           <div class="row">
+            <div class="col-md-6">
+              <div class="aa-single-filter-search">
+                <span>AREA (SQ)</span>
+                <span>FROM</span>
+                <span id="skip-value-lower" class="example-val" name="min_sqft" value="{{max_and_min.minimum_sqft}}">{{max_and_min.minimum_sqft}}</span>
+                {{form.min_sqft}}
+                <span>TO</span>
+                <span id="skip-value-upper" class="example-val" name="max_sqft" value="{{max_and_min.maximum_sqft}}">{{max_and_min.maximum_sqft}}</span>
+                {{form.max_sqft}}
+                <div id="aa-sqrfeet-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
+                </div>                  
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="aa-single-filter-search">
+                <span>PRICE ($)</span>
+                <span>FROM</span>
+                <span id="skip-value-lower2" class="example-val" name="min_price" value="{{max_and_min.minimum_price}}">{{max_and_min.minimum_price}}</span>
+                {{form.min_price}}
+                <span>TO</span>
+                <span id="skip-value-upper2" class="example-val" name="max_price" value="{{max_and_min.maximum_price}}">{{max_and_min.maximum_price|intcomma}}</span>
+                {{form.max_price}}
+                <div id="aa-price-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
+                </div>      
+              </div>
+            </div>
+            </div>
+          </div>  
+         </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script>
+    var min_price = {{max_and_min.minimum_price}};
+    var max_price = {{max_and_min.maximum_price}};
+    var min_sqft = {{max_and_min.minimum_sqft}};
+    var max_sqft = {{max_and_min.maximum_sqft}};
+    var current_min_price = min_price;
+    var current_max_price = max_price;
+    var current_min_sqft = min_sqft;
+    var current_max_sqft = max_sqft;
+  </script>
+  <!-- / Advance Search -->
+
+  <!-- About us -->
+  <section id="aa-about-us">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-about-us-area">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="aa-about-us-left">
+                  <img src="{% static 'img/about-us.png' %}" alt="image">
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="aa-about-us-right">
+                  <div class="aa-title">
+                    <h2>About Us</h2>
+<span></span>
+</div>
+<p>At Home Property, we are passionate about helping people find not just a property, but a place to call home. With years of experience in the real estate industry, our team is committed to offering personalized services, expert guidance, and local market insights. Whether you're buying, selling, or renting, we ensure a smooth and satisfying experience from start to finish.</p>                  
+
+<ul>
+  <li>Over 10+ years of real estate expertise in residential and commercial properties.</li>
+  <li>Dedicated team of licensed professionals committed to customer satisfaction.</li>
+  <li>Extensive property listings across prime locations and neighborhoods.</li>                    
+  <li>Transparent processes with no hidden fees or surprises.</li>
+  <li>Guidance through every step—from property search to final paperwork.</li>
+  <li>We value relationships over transactions and strive for long-term trust.</li>
+</ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / About us -->
+
+  <!-- Latest property -->
+  <section id="aa-latest-property">
+    <div class="container">
+      <div class="aa-latest-property-area">
+        <div class="aa-title">
+          <h2>Latest Properties</h2>
+          <span></span>
+          <p>Discover the newest properties on the market. Whether you're buying, renting, or investing — find a place that feels like home.</p>         
+        </div>
+        <div class="aa-latest-properties-content">
+          <div class="row d-flex justify-content-center">
+          {% for property in properties %}
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+              <article class="aa-properties-item">
+                <a href="#" class="aa-properties-item-img">
+                  <img src="{{property.MainPhoto.url}}" alt="{{property.title}}">
+                </a>
+                {% if property.get_property_status_display == "For Sale" %}
+                  <div class="aa-tag for-sale">
+                    {{property.get_property_status_display}}
+                  </div>
+                {% elif property.get_property_status_display == "For Rent"%}
+                  <div class="aa-tag for-rent">
+                    {{property.get_property_status_display}}
+                  </div>
+                {% else %}
+                  <div class="aa-tag sold-out">
+                    {{property.get_property_status_display}}
+                  </div>
+                {% endif %}
+                <div class="aa-properties-item-content">
+                  <div class="aa-properties-info">
+                    
+                    <span>{{property.bedrooms}} Beds</span>
+                    <span>{{property.bathrooms}} Baths</span>
+                    <span>{{property.sqft}} SQ FT</span>
+                    <span>City: {{property.city}}</span>
+                  </div>
+                  <div class="aa-properties-about">
+                    <h3><a href="{{property.get_absolute_url}}">{{property.title}}</a></h3>
+                    <p>{{property.description|truncatewords:20}}</p>                      
+                  </div>
+                  <div class="aa-properties-detial">
+                    <span class="aa-price">
+                      ₹{{property.price|intcomma}}
+                    </span>
+                    <a href="{{property.get_absolute_url}}" class="aa-secondary-btn">View Details</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Latest property -->
+
+  <!-- Service section -->
+  <section id="aa-service">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-service-area">
+            <div class="aa-title">
+              <h2>Our Service</h2>
+              <span></span>
+              <p>We provide a comprehensive range of real estate services tailored to meet your needs — from buying and selling to renting and property management. Let us help you make your next move with confidence.</p>
+            </div>
+            <!-- service content -->
+            <div class="aa-service-content">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="aa-single-service">
+                    <div class="aa-service-icon">
+                      <span class="fa fa-home"></span>
+                    </div>
+                    <div class="aa-single-service-content">
+                      <h4><a href="#">Property Sale</a></h4>
+                      <p>Discover the perfect blend of comfort and convenience with this beautifully maintained property. Featuring spacious interiors, modern finishes, and a welcoming atmosphere, this home offers an ideal living space for families or individuals alike. Located in a peaceful neighborhood with easy access to schools, shopping centers, and public transport, it’s the perfect place to settle down or invest. Don’t miss the opportunity to make this house your home.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="aa-single-service">
+                    <div class="aa-service-icon">
+                      <span class="fa fa-check"></span>
+                    </div>
+                    <div class="aa-single-service-content">
+                      <h4><a href="#">Property Rent</a></h4>
+                      <p>Step into comfort with this inviting rental property that combines style, functionality, and convenience. This well-maintained home offers spacious rooms, contemporary fittings, and plenty of natural light—perfect for individuals, couples, or small families. Situated in a prime location close to public transport, schools, shops, and restaurants, it’s ideal for those seeking a balanced lifestyle. Schedule a viewing today and experience the comfort of your new home.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="aa-single-service">
+                    <div class="aa-service-icon">
+                      <span class="fa fa-crosshairs"></span>
+                    </div>
+                    <div class="aa-single-service-content">
+                      <h4><a href="#">Property Development</a></h4>
+                      <p>Unlock the potential of this prime development site, perfectly positioned for a transformative residential or commercial project. With ample space and strong infrastructure connections, this property offers endless possibilities for investors and developers alike. Located in a high-growth area with increasing demand, it’s the ideal setting to bring your vision to life—whether it's modern housing, mixed-use spaces, or a bespoke commercial complex. Don't miss this rare opportunity to invest in the future.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="aa-single-service">
+                    <div class="aa-service-icon">
+                      <span class="fa fa-bar-chart-o"></span>
+                    </div>
+                    <div class="aa-single-service-content">
+                      <h4><a href="#">Market Analysis</a></h4>
+                      <p>Gain a competitive edge with our comprehensive real estate market analysis. This report provides valuable insights into current property trends, pricing fluctuations, buyer behavior, and investment opportunities. Whether you're a buyer, seller, investor, or developer, our data-driven approach helps you make informed decisions in a dynamic market landscape. Stay ahead with accurate forecasting, local market breakdowns, and expert recommendations tailored to your real estate goals.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Service section -->
+
+  <!-- Promo Banner Section -->
+  <section id="aa-promo-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-promo-banner-area">
+            <h3>Find Your Best Property</h3>
+            <p>Discover the ideal property that suits your needs and lifestyle. Whether you're looking for a cozy apartment, a family home, or a luxurious estate, we have a variety of options available for you. Let us help you find your dream property today!</p>
+            <a href="{%url 'property:Properties-List'%}" class="aa-view-btn">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Promo Banner Section -->
+
+  <!-- Our Agent Section-->
+  <section id="aa-agents">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-agents-area">
+            <div class="aa-title">
+              <h2>Our Agents</h2>
+              <span></span>
+              <p>Our dedicated team of real estate professionals is here to guide you every step of the way. With deep local knowledge and a passion for service, we’re ready to help you find your perfect property.</p>
+            </div>
+            <!-- agents content -->
+            <div class="aa-agents-content">
+              <ul class="aa-agents-slider">
+                <li>
+                  <div class="aa-single-agents">
+                    <div class="aa-agents-img">
+                      <img src="{% static 'img/agents/agent1.jpg' %}" alt="agent member image">
+                    </div>
+                    <div class="aa-agetns-info">
+                      <h4><a href="#">Philip Smith</a></h4>
+                      <span>Top Agent</span>
+                      <div class="aa-agent-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="aa-single-agents">
+                    <div class="aa-agents-img">
+                      <img src="{% static 'img/agents/agent2.jpg' %}" alt="agent member image">
+                    </div>
+                    <div class="aa-agetns-info">
+                      <h4><a href="#">Adam Barney</a></h4>
+                      <span>Expert Agent</span>
+                      <div class="aa-agent-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="aa-single-agents">
+                    <div class="aa-agents-img">
+                      <img src="{% static 'img/agents/agent3.jpg' %}" alt="agent member image">
+                    </div>
+                    <div class="aa-agetns-info">
+                      <h4><a href="#">Paul Walker</a></h4>
+                      <span>Director</span>
+                      <div class="aa-agent-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="aa-single-agents">
+                    <div class="aa-agents-img">
+                      <img src="{% static 'img/agents/agent4.jpg' %}" alt="agent member image">
+                    </div>
+                    <div class="aa-agetns-info">
+                      <h4><a href="#">John Smith</a></h4>
+                      <span>Jr. Agent</span>
+                      <div class="aa-agent-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                 <li>
+                  <div class="aa-single-agents">
+                    <div class="aa-agents-img">
+                      <img src="{% static 'img/agents/agent5.jpg' %}" alt="agent member image">
+                    </div>
+                    <div class="aa-agetns-info">
+                      <h4><a href="#">Jane Smith</a></h4>
+                      <span>Top Agent</span>
+                      <div class="aa-agent-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="aa-single-agents">
+                    <div class="aa-agents-img">
+                      <img src="{% static 'img/agents/agent6.jpg' %}" alt="agent member image">
+                    </div>
+                    <div class="aa-agetns-info">
+                      <h4><a href="#">Julia Barney</a></h4>
+                      <span>Expert Agent</span>
+                      <div class="aa-agent-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="aa-single-agents">
+                    <div class="aa-agents-img">
+                      <img src="{% static 'img/agents/agent7.jpg' %}" alt="agent member image">
+                    </div>
+                    <div class="aa-agetns-info">
+                      <h4><a href="#">Christina Walker</a></h4>
+                      <span>Director</span>
+                      <div class="aa-agent-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="aa-single-agents">
+                    <div class="aa-agents-img">
+                      <img src="{% static 'img/agents/agent8.jpg' %}" alt="agent member image">
+                    </div>
+                    <div class="aa-agetns-info">
+                      <h4><a href="#">Mary Huston</a></h4>
+                      <span>Jr. Agent</span>
+                      <div class="aa-agent-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Our Agent Section-->
+
+  <!-- Client Testimonial -->
+  <section id="aa-client-testimonial">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-client-testimonial-area">
+            <div class="aa-title">
+              <h2>What Client Say</h2>
+              <span></span>
+              <p>We pride ourselves on providing exceptional service and helping our clients find the perfect property. Here's what some of our happy clients have to say about their experiences with us:</p>
+            </div>
+            <!-- testimonial content -->
+            <div class="aa-testimonial-content">
+              <!-- testimonial slider -->
+              <ul class="aa-testimonial-slider">
+                <li>
+                  <div class="aa-testimonial-single">
+                    <div class="aa-testimonial-img">
+                      <img src="{% static 'img/testimonial-1.png' %}" alt="testimonial img">
+                    </div>
+                    <div class="aa-testimonial-info">
+                      <p>"The team at Home Property helped me find the perfect home. Their attention to detail and understanding of my needs was unmatched. I couldn't be happier with the service I received, and I recommend them to anyone looking for a stress-free home-buying experience!"</p>
+                    </div>
+                    <div class="aa-testimonial-bio">
+                      <p>David Muller</p>
+                      <span>Web Designer</span>
+                    </div>
+                  </div>
+                </li>
+                 <li>
+                  <div class="aa-testimonial-single">
+                    <div class="aa-testimonial-img">
+                      <img src="{% static 'img/testimonial-3.png' %}" alt="testimonial img">
+                    </div>
+                    <div class="aa-testimonial-info">
+                      <p>"Working with Home Property was a game-changer. They truly listened to what I was looking for and delivered beyond my expectations. From start to finish, the process was smooth and professional. I now own a beautiful apartment thanks to their amazing team!"</p>
+                    </div>
+                    <div class="aa-testimonial-bio">
+                      <p>Sunita Martin</p>
+                      <span>Apartment Owner</span>
+                    </div>
+                  </div>
+                </li>
+                 <li>
+                  <div class="aa-testimonial-single">
+                    <div class="aa-testimonial-img">
+                      <img src="{% static 'img/testimonial-2.png' %}" alt="testimonial img">
+                    </div>
+                    <div class="aa-testimonial-info">
+                      <p>"I had been searching for months with no luck, until I found Home Property. Their team understood exactly what I needed and made the entire experience stress-free. I felt supported every step of the way. Highly recommend to anyone looking for their next home!"</p>
+                    </div>
+                    <div class="aa-testimonial-bio">
+                      <p>Meera Patel</p>
+                      <span>First-Time Buyer</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Client Testimonial -->
+
+  <!-- Client brand -->
+  <section id="aa-client-brand">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-client-brand-area">
+            <ul class="aa-client-brand-slider">
+              <li>
+                <div class="aa-client-single-brand">
+                  <img src="{% static 'img/client-brand-1.png' %}" alt="brand image">
+                </div>
+              </li>
+              <li>
+                <div class="aa-client-single-brand">
+                  <img src="{% static 'img/client-brand-2.png' %}" alt="brand image">
+                </div>
+              </li>
+              <li>
+                <div class="aa-client-single-brand">
+                  <img src="{% static 'img/client-brand-3.png' %}" alt="brand image">
+                </div>
+              </li>
+              <li>
+                <div class="aa-client-single-brand">
+                  <img src="{% static 'img/client-brand-5.png' %}" alt="brand image">
+                </div>
+              </li>
+              <li>
+                <div class="aa-client-single-brand">
+                  <img src="{% static 'img/client-brand-4.png' %}" alt="brand image">
+                </div>
+              </li>
+               <li>
+                <div class="aa-client-single-brand">
+                  <img src="{% static 'img/client-brand-1.png' %}" alt="brand image">
+                </div>
+              </li>
+              <li>
+                <div class="aa-client-single-brand">
+                  <img src="{% static 'img/client-brand-2.png' %}" alt="brand image">
+                </div>
+              </li>
+              <li>
+                <div class="aa-client-single-brand">
+                  <img src="{% static 'img/client-brand-3.png' %}" alt="brand image">
+                </div>
+              </li>
+              <li>
+                <div class="aa-client-single-brand">
+                  <img src="{% static 'img/client-brand-5.png' %}" alt="brand image">
+                </div>
+              </li>
+              <li>
+                <div class="aa-client-single-brand">
+                  <img src="{% static 'img/client-brand-4.png' %}" alt="brand image">
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Client brand -->
+
+  <!-- Latest blog -->
+  <section id="aa-latest-blog">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-latest-blog-area">
+            <div class="aa-title">
+              <h2>Latest News</h2>
+              <span></span>
+              <p>Stay informed with the latest updates from the real estate world. From market trends and investment tips to local property news and expert insights — discover everything you need to make confident property decisions.</p>
+              </div>              
+            <div class="aa-latest-blog-content">
+              <div class="row">
+                <!-- start single blog -->
+                {% for blog in blogs %}
+                  <div class="col-md-4">
+                    <article class="aa-blog-single">
+                      <figure class="aa-blog-img">
+                        <a href="{{blog.get_absolute_url}}"><img src="{{blog.image.url}}" alt="img"></a>
+                        <span class="aa-date-tag">{{blog.pub_date|date:"Y b d"}}</span>
+                      </figure>
+                      <div class="aa-blog-single-content">
+                        <h3><a href="#">{{blog.title}}</a></h3>
+                        <p>{{blog.content|safe|truncatewords:20}}</p>
+                        <div class="aa-blog-single-bottom">
+                          <a href="#" class="aa-blog-author"><i class="fa fa-user"></i> {{blog.author}}</a>
+                          <a href="#" class="aa-blog-comments"><i class="fa fa-comment-o"></i>{{blog.comments.count}}</a>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Latest blog -->
+{% endblock %}
