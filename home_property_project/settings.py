@@ -24,9 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-k+9qr&evs)gantx7iw!(n66#d^8m5s3sxakao18f7m7u*1o9pj"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DEBUG", True))
+#DEBUG = bool(os.environ.get("DEBUG", True))
+DEBUG = bool(os.environ.get("DEBUG", False))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1 localhost").split(" ")
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "real-estate-property.herokuapp.com" "127.0.0.1 localhost").split(" ")
 
 
 # Application definition
@@ -137,6 +138,10 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+# Static root
+STATIC_ROOT= [os.path.join(BASE_DIR, "static")]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media root
 MEDIA_URL = "/media/"
